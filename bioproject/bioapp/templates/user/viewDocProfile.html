@@ -1,0 +1,213 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+    <title>USER HOME</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+<body>
+
+
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+        <div class="top_menu row m0">
+            <div class="container">
+                <div class="float-left">
+                    <a class="dn_btn" href="mailto:medical@example.com"><i class="ti-email"></i>medical@example.com</a>
+                    <span class="dn_btn"> <i class="ti-location-pin"></i>Find our Location</span>
+                </div>
+                <div class="float-right">
+                    <ul class="list header_social">
+                        <li><a href="#"><i class="ti-facebook"></i></a></li>
+                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                        <li><a href="#"><i class="ti-skype"></i></a></li>
+                        <li><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+
+                            {% if admin == 1 %}
+
+                            <li class="nav-item"><a class="nav-link" href="/adminHome/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Adminabout/">About</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DOCTORS</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="/viewDoctorlist/">Registered Doctors</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/viewNewDoc/">New Registrations</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DISEASES</a>
+                                <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="nav-link" href="/diseaseList/">View New Disease Data</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/activeDiseases/">Approved Diseases</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout/">Log Out</a></li>
+
+
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" href="/userHome1/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/uProfile/">Profile</a></li>
+                             <li class="nav-item"><a class="nav-link" href="/userViewDoctors/">Doctors</a></li>                             <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/userabout/">About</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/logout/">Log Out</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--================Header Menu Area =================-->
+
+
+
+ <!--================Home Banner Area =================-->
+    <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+          <div
+            class="banner_content d-md-flex justify-content-between align-items-center"
+          >
+            <div class="mb-3 mb-md-0">
+              <h2>Welcome {{user.fname}}&nbsp{{user.lname}}</h2>
+              <p>Belding years moveth earth green behold wherein</p>
+            </div>
+            <div class="page_link">
+              <a href="index.html">Home</a>
+              <a href="contact.html">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section area-padding">
+    <div class="container">
+       <h1>Doctors Profile</h1><br><br>
+       <div class="row">
+       <div class="col-lg-5">
+       <div class="appointment-form">
+
+
+
+            <table >
+                <tr><th>Doctor Id</th><td>:{{doc.did}}</td><tr>
+                <tr><th>Name</th> <td>:{{doc.fname}}&nbsp{{doc.lname}}</td></tr>
+                <tr><th>Email</th><td>:{{doc.email}}</td></tr>
+                <tr><th>Contact Number</th><td>:{{doc.ph}}</td></tr>
+                <tr><th>Highest Qualification</th><td>:{{doc.qual}}</td></tr>
+                <tr><th>Specialization</th><td>:{{doc.spec}}</td></tr>
+                <tr><th>Experience</th><td>:{{now|timeuntil:doc.exp}} </td></tr>
+
+            </table>
+
+       </div>
+        </div>
+       </div>
+    </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+
+
+
+        <!--================ Start Brands Area =================-->
+        <section class="brands-area background_one">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="owl-carousel brand-carousel">
+                            <!-- single-brand -->
+                            <div class="single-brand-item d-table">
+                                <div class="d-table-cell">
+                                    <img src="{% static 'img/brand/1.png' %}" alt="">
+                                </div>
+                            </div>
+                            <!-- single-brand -->
+                            <div class="single-brand-item d-table">
+                                <div class="d-table-cell">
+                                    <img src="{% static 'img/brand/2.png' %}" alt="">
+                                </div>
+                            </div>
+                            <!-- single-brand -->
+                            <div class="single-brand-item d-table">
+                                <div class="d-table-cell">
+                                    <img src="{% static 'img/brand/3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <!-- single-brand -->
+                            <div class="single-brand-item d-table">
+                                <div class="d-table-cell">
+                                    <img src="{% static 'img/brand/4.png' %}" alt="">
+                                </div>
+                            </div>
+                            <!-- single-brand -->
+                            <div class="single-brand-item d-table">
+                                <div class="d-table-cell">
+                                    <img src="{% static 'img/brand/5.png' %}" alt="">
+                                </div>
+                            </div>
+                            <!-- single-brand -->
+                            <div class="single-brand-item d-table">
+                                <div class="d-table-cell">
+                                    <img src="{% static 'img/brand/3.png' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ End Brands Area =================-->
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/stellar.js' %}"></script>
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+</body>
+</html>
